@@ -1,2 +1,2 @@
-# togs-cop
-Online version of Toggl-Coper
+# Togs Cop
+Online version of Toggl-Copier
