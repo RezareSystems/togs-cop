@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Rezare.TogsCop.Api.Services.Models;
 
-namespace Rezare.TogsCop.Api.Services.WorkFlowMax
+namespace Rezare.TogsCop.Api.Services
 {
     public interface IStaffService
     {

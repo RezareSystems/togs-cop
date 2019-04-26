@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Rezare.TogsCop.Api.Services.Models;
 using WorkFlowMaxIntegration = Rezare.TogsCop.Integration.WorkFlowMax;
 
-namespace Rezare.TogsCop.Api.Services.WorkFlowMax
+namespace Rezare.TogsCop.Api.Services
 {
     public class StaffService : IStaffService
     {

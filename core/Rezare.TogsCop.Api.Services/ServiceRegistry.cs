@@ -7,6 +7,8 @@ namespace Rezare.TogsCop.Api.Services
         public static void RegisterServices(IServiceCollection services)
         {
             WorkFlowMax.WorkFlowMaxServiceRegistry.RegisterServices(services);
+
+            services.AddScoped<IStaffService, StaffService>();
         }
     }
 }
