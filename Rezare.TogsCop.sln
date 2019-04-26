@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rezare.TogsCop.Api.Services
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rezare.TogsCop.Integration.WorkFlowMax", "core\Rezare.TogsCop.Integration.WorkFlowMax\Rezare.TogsCop.Integration.WorkFlowMax.csproj", "{75D21646-E37F-4B0C-AD95-A8CE31E94D1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rezare.TogsCop.UI.Angular", "presentation\Rezare.TogsCop.UI.Angular.csproj", "{91B6206C-D5AE-410B-9D59-8D52301242FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{75D21646-E37F-4B0C-AD95-A8CE31E94D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75D21646-E37F-4B0C-AD95-A8CE31E94D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75D21646-E37F-4B0C-AD95-A8CE31E94D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91B6206C-D5AE-410B-9D59-8D52301242FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91B6206C-D5AE-410B-9D59-8D52301242FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91B6206C-D5AE-410B-9D59-8D52301242FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91B6206C-D5AE-410B-9D59-8D52301242FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{79BBBCE1-80E5-41FF-98C7-32970C8C9ACA} = {250496BE-2D77-4733-B8E9-BC93705F0ED5}
 		{085E9667-4BA2-4E2E-922D-BC205262A976} = {1F6AEBF1-0227-4DA9-AF0D-C511F9EE55C0}
 		{75D21646-E37F-4B0C-AD95-A8CE31E94D1B} = {1F6AEBF1-0227-4DA9-AF0D-C511F9EE55C0}
+		{91B6206C-D5AE-410B-9D59-8D52301242FF} = {616F1E82-32CF-464C-9E4B-1B01799AD478}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D8D7A5C-4996-4C21-B235-5CE7D537D1F3}
