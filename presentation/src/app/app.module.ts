@@ -6,6 +6,7 @@ import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule 
 import { FooterModule, LoginFormModule } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { AppRoutingModule } from './app-routing.module';
+import { DxSelectBoxModule } from 'devextreme-angular'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     SingleCardModule,
     FooterModule,
     LoginFormModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DxSelectBoxModule
   ],
   providers: [AuthService, ScreenService, AppInfoService],
   bootstrap: [AppComponent]
