@@ -23,7 +23,9 @@ namespace Rezare.TogsCop.Api.Services
             {
                 WorkFlowMaxId = s.Id,
                 Name = s.Name
-            }).ToList();
+            })
+            .OrderBy(s => s.Name)
+            .ToList();
         }
     }
 }
