@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule } from './layouts';
 import { FooterModule, LoginFormModule } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { AppRoutingModule } from './app-routing.module';
-import { DxSelectBoxModule } from 'devextreme-angular'
+import { DxSelectBoxModule } from 'devextreme-angular';
+import { ApiModule } from './modules/api/api.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DxSelectBoxModule } from 'devextreme-angular'
     FooterModule,
     LoginFormModule,
     AppRoutingModule,
-    DxSelectBoxModule
+    HttpClientModule,
+    DxSelectBoxModule,
+    ApiModule
   ],
   providers: [AuthService, ScreenService, AppInfoService],
   bootstrap: [AppComponent]
