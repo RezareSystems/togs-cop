@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Rezare.TogsCop.Api.Services;
 using Rezare.TogsCop.Api.Services.Models;
-using Rezare.TogsCop.Api.Services.WorkFlowMax;
 
 namespace Rezare.TogsCop.Api.Controllers
 {
