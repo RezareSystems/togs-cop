@@ -2,6 +2,7 @@ version: 0.2
 env:
   variables:
     BUILD_ENV: "prod"
+    S3_BUCKET: "togscop-dev.s3.amazonaws.com"
 phases:
   install:
     commands:
@@ -15,6 +16,12 @@ phases:
       - ng build --prod
       - echo Build completed on `date`
       - echo pwd
+  post_build:
+    commands:
+      - aws s3 rm s3://${S3_BUCKET} --recursive
+      - echo S3 bucket is cleared
+      - aws s3 cp production/dist s3://${S3_BUCKET} --recursive
+      - echo Build completed on `date`
 artifacts:
   files:
     - '**/*'
