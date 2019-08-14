@@ -13,7 +13,7 @@ phases:
     commands:
       - echo Build started on `date`
       - ng build --prod
-      - echo Build completed on `date'
+      - echo Build completed on `date`
       - echo pwd
 artifacts:
   files:
