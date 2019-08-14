@@ -11,10 +11,10 @@ phases:
       - npm install -g @angular/cli
   build:
     commands:
-      - echo Build started
+      - echo Build started on `date`
       - ng build --prod
-      - echo Build completed
-      - echo 'Hello'
+      - echo Build completed on `date'
+      - echo pwd
 artifacts:
   files:
     - '**/*'
