@@ -8,11 +8,12 @@ phases:
       - echo Installing source NPM dependencies...
       - npm install
       - npm install -g @angular/cli
+      - cd presentation
   build:
     commands:
       - echo Build started on `date`
       - ng build --${BUILD_ENV}
-      - echo Build completed on 'date'
+      - echo Build completed on `date`
 artifacts:
   files:
     - '**/*'
