@@ -7,9 +7,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Rezare.TogsCop.Integration.Toggl\Rezare.TogsCop.Integration.Toggl.csproj" />
     <ProjectReference Include="..\Rezare.TogsCop.Integration.WorkFlowMax\Rezare.TogsCop.Integration.WorkFlowMax.csproj" />
   </ItemGroup>
 
