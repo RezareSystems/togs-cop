@@ -19,6 +19,10 @@ namespace Rezare.TogsCop.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(config =>
+                {
+                    config.AddJsonFile("appsettings.user.json", optional: true);
+                })
                 .UseStartup<Startup>();
     }
 }
