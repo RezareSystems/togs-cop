@@ -8,11 +8,6 @@ env:
 phases:
   install:
     commands:
-      - echo Installing HTTPS for APT...
-      - wget -q http://archive.ubuntu.com/ubuntu/pool/main/a/apt/apt-transport-https_1.0.1ubuntu2_amd64.deb
-      - dpkg -i apt-transport-https_1.0.1ubuntu2_amd64.deb
-      - rm apt-transport-https_1.0.1ubuntu2_amd64.deb
-
       - echo Registering .Net Core Feed...
       - wget -q https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
       - dpkg -i packages-microsoft-prod.deb
