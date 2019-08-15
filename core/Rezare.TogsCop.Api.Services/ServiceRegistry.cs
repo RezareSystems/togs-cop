@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Rezare.TogsCop.Api.Services.Abstractions;
+using Rezare.TogsCop.Api.Services.Implementations;
 
 namespace Rezare.TogsCop.Api.Services
 {
@@ -11,6 +13,7 @@ namespace Rezare.TogsCop.Api.Services
 
             services.AddScoped<IStaffService, StaffService>();
             services.AddScoped<ITimeEntryService, TimeEntryService>();
+            services.AddScoped<IWfmTasksService, WfmTasksService>();
         }
     }
 }
