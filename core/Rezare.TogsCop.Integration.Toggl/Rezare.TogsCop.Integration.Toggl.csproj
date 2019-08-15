@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Refit" Version="4.6.107" />
+    <PackageReference Include="TogglAPI.Net" Version="0.2.0" />
   </ItemGroup>
 
 </Project>
