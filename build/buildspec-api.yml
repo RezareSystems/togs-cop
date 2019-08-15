@@ -24,8 +24,7 @@ phases:
       - apt-get install -y apt-transport-https
 
       - echo Installing .Net Core...
-      - apt-get install -y aspnetcore-runtime-2.2 dotnet-runtime-2.2
-      - apt-get install -y dotnet-sdk-2.2
+      - apt-get install -y -f dotnet-sdk-2.2
   pre_build:
     commands:
       - echo Logging into Amazon ECR...
