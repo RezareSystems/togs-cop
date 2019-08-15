@@ -7,7 +7,7 @@ RUN dotnet restore
 
 # Copy everything else and build
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish infrastructure/Rezare.TogsCop.Api/Rezare.TogsCop.Api.csproj -c Release -o out
 
 # Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
