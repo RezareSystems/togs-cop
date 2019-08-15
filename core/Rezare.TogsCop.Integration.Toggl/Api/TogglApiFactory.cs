@@ -32,7 +32,8 @@ namespace Rezare.TogsCop.Integration.Toggl.Api
             var settings = await _settingsService.Get();
 
             _client.BaseAddress = new Uri(settings.WebServiceUrl);
-            _client.DefaultRequestHeaders.Add("Authorization", GenerateAuthorizationHeader(apiKey).ToString());
+            _client.DefaultRequestHeaders.Authorization = GenerateAuthorizationHeader(apiKey);
+            //_client.DefaultRequestHeaders.Add("Authorization", GenerateAuthorizationHeader(apiKey).ToString());
         }
 
         private AuthenticationHeaderValue GenerateAuthorizationHeader(string apiKey) 

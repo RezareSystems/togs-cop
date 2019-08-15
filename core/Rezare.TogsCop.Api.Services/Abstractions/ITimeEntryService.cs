@@ -8,5 +8,7 @@ namespace Rezare.TogsCop.Api.Services
     public interface ITimeEntryService
     {
         Task<List<TimeEntry>> GetFromToggl(DateTimeOffset date, string apiKey);
+
+        Task<List<TimeEntry>> GetTimeRecords(string apiKey, DateTime startDate, DateTime endDate);
     }
 }

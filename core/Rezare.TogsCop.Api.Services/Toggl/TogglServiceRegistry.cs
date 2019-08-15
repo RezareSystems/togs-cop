@@ -5,13 +5,14 @@ namespace Rezare.TogsCop.Api.Services.Toggl
 {
     public static class TogglServiceRegistry
     {
-        public static void RegisterServices(IServiceCollection services) 
+        public static void RegisterServices(IServiceCollection services)
         {
             services.AddHttpClient<TogglIntegration.Api.ITogglApiFactory, TogglIntegration.Api.TogglApiFactory>();
+            services.AddHttpClient<TogglIntegration.Services.ITimeEntryService, TogglIntegration.Services.TimeEntryService>();
 
             services.AddSingleton<TogglIntegration.Api.ITogglApiSettingsService, TogglSettingsService>();
             //services.AddScoped<TogglIntegration.Api.ITogglApiFactory, TogglIntegration.Api.TogglApiFactory>();
-            services.AddScoped<TogglIntegration.Services.ITimeEntryService, TogglIntegration.Services.TimeEntryService>();
+            //services.AddScoped<TogglIntegration.Services.ITimeEntryService, TogglIntegration.Services.TimeEntryService>();
         }
     }
 }

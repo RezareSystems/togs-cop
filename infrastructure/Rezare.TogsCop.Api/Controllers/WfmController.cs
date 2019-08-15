@@ -32,7 +32,6 @@ namespace Rezare.TogsCop.Api.Controllers
         [HttpGet("staff/{wfmStaffId}/tasks")]
         public Task<ActionResult<IEnumerable<WfmTask>>> GetWfmTasks(int wfmStaffId)
         {
-            //TODO : Change to tasks
             return WrapRequestAsync(() => _wfmTasksService.GetUserTasks(wfmStaffId));
         }
 
