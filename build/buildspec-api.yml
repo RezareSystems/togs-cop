@@ -25,6 +25,7 @@ phases:
 
       - echo Installing .Net Core...
       - apt-get install -y -f dotnet-sdk-2.2
+      - apt-get install -y -f
   pre_build:
     commands:
       - echo Logging into Amazon ECR...
