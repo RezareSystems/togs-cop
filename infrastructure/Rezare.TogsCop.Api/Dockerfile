@@ -1,23 +1,16 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
-WORKDIR /src
-COPY ["infrastructure/Rezare.TogsCop.Api/Rezare.TogsCop.Api.csproj", "infrastructure/Rezare.TogsCop.Api/"]
-COPY ["core/Rezare.TogsCop.Api.Services/Rezare.TogsCop.Api.Services.csproj", "core/Rezare.TogsCop.Api.Services/"]
-COPY ["core/Rezare.TogsCop.Integration.WorkFlowMax/Rezare.TogsCop.Integration.WorkFlowMax.csproj", "core/Rezare.TogsCop.Integration.WorkFlowMax/"]
-COPY ["core/Rezare.TogsCop.Integration.Toggl/Rezare.TogsCop.Integration.Toggl.csproj", "core/Rezare.TogsCop.Integration.Toggl/"]
-RUN dotnet restore "infrastructure/Rezare.TogsCop.Api/Rezare.TogsCop.Api.csproj"
-COPY . .
-WORKDIR "/src/infrastructure/Rezare.TogsCop.Api"
-RUN dotnet build "Rezare.TogsCop.Api.csproj" -c Release -o /app
+# Copy csproj and restore as distinct layers
+COPY **.csproj ./
+RUN dotnet restore
 
-FROM build AS publish
-RUN dotnet publish "Rezare.TogsCop.Api.csproj" -c Release -o /app
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-FROM base AS final
+# Build runtime image
+FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Rezare.TogsCop.Api.dll"]
