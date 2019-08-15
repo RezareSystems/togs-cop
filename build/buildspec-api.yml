@@ -32,7 +32,7 @@ phases:
     commands:
       - echo Logging into Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_REGION)
-      - REPOSITORY_URI=615504230749.dkr.ecr.ap-southeast-2.amazonaws.com/easy-trace-api
+      - REPOSITORY_URI=737779982043.dkr.ecr.ap-southeast-2.amazonaws.com/togscop
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
@@ -40,7 +40,7 @@ phases:
       - echo Build started on `date`
       - echo Building docker Image...
       - echo Version - $IMAGE_TAG
-      - docker build -t $REPOSITORY_URI:latest ./src
+      - docker build -t $REPOSITORY_URI:latest ./infrastructure/Rezare.TogsCop.Api
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
       - echo Build Completed on `date`
