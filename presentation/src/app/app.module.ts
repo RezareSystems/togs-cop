@@ -7,7 +7,7 @@ import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule 
 import { FooterModule, LoginFormModule } from './shared/components';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { AppRoutingModule } from './app-routing.module';
-import { DxSelectBoxModule } from 'devextreme-angular';
+import { DxSelectBoxModule, DxTextBoxModule, DxDateBoxModule, DxButtonModule, DxDataGridModule } from 'devextreme-angular';
 import { ApiModule } from './modules/api/api.module';
 
 @NgModule({
@@ -24,6 +24,10 @@ import { ApiModule } from './modules/api/api.module';
     AppRoutingModule,
     HttpClientModule,
     DxSelectBoxModule,
+    DxTextBoxModule,
+    DxDateBoxModule,
+    DxButtonModule,
+    DxDataGridModule,
     ApiModule
   ],
   providers: [AuthService, ScreenService, AppInfoService],

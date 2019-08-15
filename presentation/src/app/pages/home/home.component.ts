@@ -7,9 +7,10 @@ import { appInitializerFactory } from '@angular/platform-browser/src/browser/ser
   templateUrl: 'home.component.html',
   styleUrls: [ './home.component.scss' ]
 })
-
 export class HomeComponent {
-  store: CustomStore;  
+  store: CustomStore;
+  startDate: Date = new Date();
+  endDate: Date = new Date();
 
   constructor(staffApi: StaffApiService) {
     this.store = new CustomStore({

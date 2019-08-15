@@ -21,7 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rezare.TogsCop.Integration.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rezare.TogsCop.UI.Angular", "presentation\Rezare.TogsCop.UI.Angular.csproj", "{91B6206C-D5AE-410B-9D59-8D52301242FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rezare.TogsCop.Integration.Toggl", "core\Rezare.TogsCop.Integration.Toggl\Rezare.TogsCop.Integration.Toggl.csproj", "{F48F4775-2F62-4FF0-BA6F-1B96617A953A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rezare.TogsCop.Integration.Toggl", "core\Rezare.TogsCop.Integration.Toggl\Rezare.TogsCop.Integration.Toggl.csproj", "{F48F4775-2F62-4FF0-BA6F-1B96617A953A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B860556F-B337-4BA5-A963-7986BD853BF2}"
+	ProjectSection(SolutionItems) = preProject
+		build\buildspec-angular.yml = build\buildspec-angular.yml
+		build\buildspec-api.yml = build\buildspec-api.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
