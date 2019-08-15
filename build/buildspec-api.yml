@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  pre_build:
+    - echo Logging into Amazon ECR...
+    - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+  build:
+    commands:
+      - echo Build Docker image on `date`
+      - cd src
+      - docker build -t togscop:latest .
+      - docker tag togscop:latest 737779982043.dkr.ecr.ap-southeast-2.amazonaws.com/togscop/togscop:latest
+      - echo Build Docker image complete on `date`
+  post_build:
+    commands:
+      - echo Pushing latest Docker image to ECR...
+      - docker push 737779982043.dkr.ecr.ap-southeast-2.amazonaws.com/togscop/togscop:latest
+      - echo Docker push completed on `date`
