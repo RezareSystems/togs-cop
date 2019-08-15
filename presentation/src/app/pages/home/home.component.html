@@ -11,7 +11,44 @@
                         [dataSource]="store">
                     </dx-select-box>
                 </div>
+                <div class="dx-field-label">Toggl API Key</div>
+                <div class="dx-field-value">
+                    <dx-text-box></dx-text-box>
+                </div>
             </div>
         </div>
+
+        <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">Date</div>
+                <div class="dx-field-value">
+                    <dx-date-box [value]="startDate"
+                                 [max]="endDate"
+                                 type="date"
+                                 [displayFormat]="'dd/MM/yyyy'">
+                    </dx-date-box>
+                </div>
+                <div class="dx-field-label">to</div>
+                <div class="dx-field-value">
+                    <dx-date-box [value]="endDate"
+                                 [min]="startDate"
+                                 type="date"
+                                 [displayFormat]="'dd/MM/yyyy'">
+                    </dx-date-box>
+                </div>
+                <!-- TODO: add onclick to button -->
+                <dx-button icon="refresh"></dx-button>        
+            </div>
+        </div>
+
+        <!-- TODO: add data source -->
+        <dx-data-grid id="timeRecordsDataGrid"
+                      [columns]="['Date', 'Toggl Description', 'Toggl Project', 'WFM Task', 'Total Time']"
+                      [showBorders]="true">
+        </dx-data-grid>
+
+        <dx-button icon="upload"
+                   text="Send"></dx-button>
+
     </div>
 </div>
