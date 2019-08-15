@@ -1,18 +1,56 @@
 version: 0.2
+
+env:
+  variables:
+    MAJOR_VERSION: "0"
+    MINOR_VERSION: "1"
+
 phases:
+  install:
+    commands:
+      - echo Installing HTTPS for APT...
+      - wget -q http://archive.ubuntu.com/ubuntu/pool/main/a/apt/apt-transport-https_1.0.1ubuntu2_amd64.deb
+      - sudo dpkg -i apt-transport-https_1.0.1ubuntu2_amd64.deb
+      - sudo rm apt-transport-https_1.0.1ubuntu2_amd64.deb
+
+      - echo Registering .Net Core Feed...
+      - wget -q https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+      - sudo dpkg -i packages-microsoft-prod.deb
+      - sudo rm packages-microsoft-prod.deb
+
+      - echo Updating APT...
+      - sudo apt-get clean
+      - sudo apt-get update
+
+      - echo Updating DPKG...
+      - sudo apt-get install -y dpkg
+
+      - echo Installing HTTPS for APT...
+      - sudo apt-get install -y apt-transport-https
+
+      - echo Installing .Net Core...
+      - sudo apt-get install -y dotnet-sdk-2.2
   pre_build:
     commands:
       - echo Logging into Amazon ECR...
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - $(aws ecr get-login --no-include-email --region $AWS_REGION)
+      - REPOSITORY_URI=615504230749.dkr.ecr.ap-southeast-2.amazonaws.com/easy-trace-api
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-      - echo Build Docker image on `date`
-      - cd src
-      - docker build -t togscop:latest .
-      - docker tag togscop:latest 737779982043.dkr.ecr.ap-southeast-2.amazonaws.com/togscop/togscop:latest
-      - echo Build Docker image complete on `date`
-  post_build:
-    commands:
-      - echo Pushing latest Docker image to ECR...
-      - docker push 737779982043.dkr.ecr.ap-southeast-2.amazonaws.com/togscop/togscop:latest
-      - echo Docker push completed on `date`
+      - echo Build started on `date`
+      - echo Building docker Image...
+      - echo Version - $IMAGE_TAG
+      - docker build -t $REPOSITORY_URI:latest ./src
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+
+      - echo Build Completed on `date`
+      - echo Pushing Docker Image...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo WRITING IMAGE DEFINITIONS FILE
+      - printf [{\"name\":\"api\",\"imageUri\":\"$REPOSITORY_URI:$IMAGE_TAG\"}] > imagedefinitions.json
+
+artifacts:
+  files: imagedefinitions.json

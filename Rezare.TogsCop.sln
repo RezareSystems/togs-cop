@@ -26,6 +26,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B860556F-B337-4BA5-A963-7986BD853BF2}"
 	ProjectSection(SolutionItems) = preProject
 		build\buildspec-angular.yml = build\buildspec-angular.yml
+		build\buildspec-api.yml = build\buildspec-api.yml
 	EndProjectSection
 EndProject
 Global
