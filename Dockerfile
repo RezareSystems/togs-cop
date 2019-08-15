@@ -12,5 +12,5 @@ RUN dotnet publish infrastructure/Rezare.TogsCop.Api/Rezare.TogsCop.Api.csproj -
 # Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
-COPY --from=build-env /app .
+COPY --from=build-env /app/infrastructure/Rezare.TogsCop.Api/out .
 ENTRYPOINT ["dotnet", "Rezare.TogsCop.Api.dll"]
