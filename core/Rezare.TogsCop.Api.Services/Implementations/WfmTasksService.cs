@@ -5,17 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Rezare.TogsCop.Api.Services.Abstractions;
 using Rezare.TogsCop.Api.Services.Models;
+using Rezare.TogsCop.Integration.WorkFlowMax.Services;
 using WorkFlowMaxIntegration = Rezare.TogsCop.Integration.WorkFlowMax;
 
 namespace Rezare.TogsCop.Api.Services.Implementations
 {
     public class WfmTasksService : IWfmTasksService
     {
-        private readonly WorkFlowMaxIntegration.Services.IWfmJobsService _apiService;
+        private readonly IWfmJobsService _apiService;
+        private readonly IWfmTimesheetService _timeSheetService;
 
-        public WfmTasksService(WorkFlowMaxIntegration.Services.IWfmJobsService apiService)
+        public WfmTasksService(IWfmJobsService apiService, IWfmTimesheetService timeSheetService)
         {
             _apiService = apiService;
+            _timeSheetService = timeSheetService;
         }
 
         public async Task<IEnumerable<WfmTask>> GetUserTasks(int wfmStaffId)
@@ -50,6 +53,22 @@ namespace Rezare.TogsCop.Api.Services.Implementations
         {
             //TODO : Call WFM API to Get an individual user task based on taskId
             throw new NotImplementedException();
+        }
+
+        public Task SendTimeRecords(TimeSheet timeSheets)
+        {
+            var apiTimeSheet = new WorkFlowMaxIntegration.Api.Models.TimeSheet
+            {
+                Id = timeSheets.Id,
+                Staff = timeSheets.Staff,
+                Job = timeSheets.Job,
+                Task = timeSheets.Task,
+                Date = timeSheets.Date,
+                Minutes = timeSheets.Minutes,
+                Note = timeSheets.Note
+            };
+
+            return _timeSheetService.SendTimeSheet(apiTimeSheet);
         }
     }
 }

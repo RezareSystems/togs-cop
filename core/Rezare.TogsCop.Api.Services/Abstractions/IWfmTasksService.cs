@@ -11,5 +11,7 @@ namespace Rezare.TogsCop.Api.Services.Abstractions
         Task<IEnumerable<WfmTask>> GetUserTasks(int wfmStaffId);
 
         Task<WfmTask> GetUserTask(int wfmStaffId, string taskId);
+
+        Task SendTimeRecords(TimeSheet timeSheets);
     }
 }

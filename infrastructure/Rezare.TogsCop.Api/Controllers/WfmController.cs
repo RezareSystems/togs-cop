@@ -36,10 +36,15 @@ namespace Rezare.TogsCop.Api.Controllers
         }
 
         //TODO : Implement POST
-        //[HttpPost("/staff/{wfmStaffId}/time-records")]
-        //public Task<ActionResult> SendTimeRecords(int wfmStaffId)
-        //{
-        //    //return Ok(new ActionResult<>());
-        //}
+        [HttpPost("staff/{wfmStaffId}/time-records")]
+        public Task<ActionResult> SendTimeRecords(int wfmStaffId, [FromBody]TimeSheet timeSheet)
+        {
+            return WrapRequestAsync(() =>
+            {
+                timeSheet.Staff = wfmStaffId;
+
+                return _wfmTasksService.SendTimeRecords(timeSheet);
+            });
+        }
     }
 }

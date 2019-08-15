@@ -10,9 +10,10 @@ namespace Rezare.TogsCop.Api.Services.WorkFlowMax
             services.AddSingleton<WorkFlowMaxIntegration.Api.IWorkFlowMaxSettingsService, WorkFlowMaxSettingsService>();
             services.AddSingleton<WorkFlowMaxIntegration.Api.IWorkFlowMaxApiFactory, WorkFlowMaxIntegration.Api.WorkFlowMaxApiFactory>();
             services.AddScoped<WorkFlowMaxIntegration.Services.IStaffService, WorkFlowMaxIntegration.Services.StaffService>();
+            services.AddScoped<WorkFlowMaxIntegration.Services.IWfmJobsService,WorkFlowMaxIntegration.Services.WfmJobsService>();
             services
-                .AddScoped<WorkFlowMaxIntegration.Services.IWfmJobsService,
-                    WorkFlowMaxIntegration.Services.WfmJobsService>();
+                .AddScoped<WorkFlowMaxIntegration.Services.IWfmTimesheetService,
+                    WorkFlowMaxIntegration.Services.WfmTimeSheetService>();
         }
     }
 }
