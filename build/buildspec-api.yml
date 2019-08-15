@@ -7,14 +7,11 @@ env:
 
 phases:
   install:
+    runtime-versions:
+      dotnet: 2.2
     commands:
-      - echo Installing HTTPS for APT...
-      - wget -q http://archive.ubuntu.com/ubuntu/pool/main/a/apt/apt-transport-https_1.0.1ubuntu2_amd64.deb
-      - dpkg -i apt-transport-https_1.0.1ubuntu2_amd64.deb
-      - rm apt-transport-https_1.0.1ubuntu2_amd64.deb
-
       - echo Registering .Net Core Feed...
-      - wget -q https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+      - wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
       - dpkg -i packages-microsoft-prod.deb
       - rm packages-microsoft-prod.deb
 
@@ -29,12 +26,13 @@ phases:
       - apt-get install -y apt-transport-https
 
       - echo Installing .Net Core...
+      - apt-get update
       - apt-get install -y dotnet-sdk-2.2
   pre_build:
     commands:
       - echo Logging into Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_REGION)
-      - REPOSITORY_URI=615504230749.dkr.ecr.ap-southeast-2.amazonaws.com/easy-trace-api
+      - REPOSITORY_URI=737779982043.dkr.ecr.ap-southeast-2.amazonaws.com/togscop
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
@@ -42,7 +40,7 @@ phases:
       - echo Build started on `date`
       - echo Building docker Image...
       - echo Version - $IMAGE_TAG
-      - docker build -t $REPOSITORY_URI:latest ./src
+      - docker build -t $REPOSITORY_URI:latest ./
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
       - echo Build Completed on `date`
